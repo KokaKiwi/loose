@@ -2,7 +2,7 @@
 declare var Random: any;
 declare var riot: any;
 
-// Define main class
+// Define util classes / interfaces
 interface Input {
     value: string;
     type: string;
@@ -17,6 +17,7 @@ interface Tag {
     showTitle: boolean;
 }
 
+// Define main class
 class Loose {
     static config = {
         password: {
