@@ -34,7 +34,8 @@ class Loose {
     }
 
     get seeder(): string {
-        return `${this.seed.value}--${this.title.value}`;
+        var sep = '//';
+        return `${this.seed.value}${sep}${this.title.value}`;
     }
 
     get seed(): Input {
@@ -65,22 +66,23 @@ class Loose {
         this.tag.showPassword = state;
     }
 
-    randomString(rand: any, alphabet: string = Loose.config.password.alphabet, length: number = Loose.config.password.length): string {
+    randomString(randIndex: (length: number) => number, alphabet: string = Loose.config.password.alphabet, length: number = Loose.config.password.length): string {
         var str = '';
 
         while (str.length < length) {
-            var index = rand() % alphabet.length;
-            str += alphabet.charAt(index);
+            str += alphabet.charAt(randIndex(alphabet.length));
         }
 
         return str;
     }
 
     generate(): string {
-        var mt = Random.engines.mt19937();
-        mt.seedWithArray(this.seeder);
+        // var mt = Random.engines.mt19937();
+        // mt.seedWithArray(this.seeder);
 
-        return this.randomString(mt);
+        Math['seedrandom'](this.seeder);
+
+        return this.randomString((length) => Math.floor(Math.random() * length));
     }
 
     updateFocus(target: any, state: boolean) {

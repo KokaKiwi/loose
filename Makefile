@@ -22,6 +22,7 @@ else
 JS_SCRIPTS		+=	$(BOWER_ROOT)/riot/riot.js
 JS_SCRIPTS		+=	$(BOWER_ROOT)/random/lib/random.js
 endif
+JS_SCRIPTS		+=	$(BOWER_ROOT)/seedrandom/seedrandom.min.js
 JS_SCRIPTS		+=	$(GENERATED_JS)
 GENERATED_CSS	=	main.css
 CSS_STYLES		+=	$(GENERATED_CSS)

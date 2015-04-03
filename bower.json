@@ -5,6 +5,7 @@
     "dependencies": {
         "riot": "*",
         "primer-css": "*",
-        "random": "*"
+        "random": "*",
+        "seedrandom": "2.3.6"
     }
 }
