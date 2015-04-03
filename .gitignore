@@ -1,0 +1,12 @@
+# Build files
+/bower_components
+/node_modules
+*.html
+*.js
+*.css
+!extern.js
+
+# Misc files
+.*
+!.editorconfig
+!.gitignore

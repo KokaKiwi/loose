@@ -8,6 +8,15 @@ interface Input {
     type: string;
 }
 
+interface Tag {
+    seed: Input;
+    title: Input;
+    password: Input;
+
+    showPassword: boolean;
+    showTitle: boolean;
+}
+
 class Loose {
     static config = {
         password: {
@@ -16,8 +25,7 @@ class Loose {
         },
     };
 
-    private tag: any;
-    private mt: any;
+    private tag: Tag;
 
     constructor(tag) {
         this.tag = tag;
@@ -57,11 +65,11 @@ class Loose {
         this.tag.showPassword = state;
     }
 
-    randomString(alphabet: string = Loose.config.password.alphabet, length: number = Loose.config.password.length): string {
+    randomString(rand: any, alphabet: string = Loose.config.password.alphabet, length: number = Loose.config.password.length): string {
         var str = '';
 
         while (str.length < length) {
-            var index = this.mt() % alphabet.length;
+            var index = rand() % alphabet.length;
             str += alphabet.charAt(index);
         }
 
@@ -69,10 +77,10 @@ class Loose {
     }
 
     generate(): string {
-        this.mt = Random.engines.mt19937();
-        this.mt.seed(this.seeder);
+        var mt = Random.engines.mt19937();
+        mt.seedWithArray(this.seeder);
 
-        return this.randomString();
+        return this.randomString(mt);
     }
 
     updateFocus(target: any, state: boolean) {

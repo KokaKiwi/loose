@@ -36,58 +36,6 @@
             this.loose.updateFocus(e.target, true);
         }
 
-        var self = this;
-
-        var mt;
-
-        var config = {
-            password: {
-                alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.',
-                length: 8,
-            },
-            seeder: function() {
-                return self.seed.value + '//' + self.title.value;
-            },
-        };
-
-        var randomString = function() {
-            var str = '';
-            while (str.length < config.password.length) {
-                var index = mt() % config.password.alphabet.length;
-                str += config.password.alphabet.charAt(index);
-            }
-            return str;
-        };
-
-        var generate = function() {
-            mt = Random.engines.mt19937()
-            mt.seedWithArray(config.seeder());
-
-            return randomString();
-        };
-
-        var updateFocus = function(target, state) {
-            var passwordMode = target != self.seed || !state;
-
-            self.seed.type = passwordMode ? 'password' : 'text';
-        };
-
-        updateState() {
-            this.showTitle = this.seed.value != undefined && this.seed.value != '';
-            this.showPassword = this.showTitle && this.title.value != undefined && this.title.value != '';
-
-            if (this.showPassword) {
-                this.password.value = generate();
-            }
-        }
-
-        onFocus(e) {
-            updateFocus(e.target, true);
-        }
-        onBlur(e) {
-            updateFocus(e.target, false);
-        }
-
-        self.updateState();
+        this.loose.updateState();
     </script>
 </loose>
