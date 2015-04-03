@@ -1,0 +1,13 @@
+{
+    "name": "loose",
+    "version": "0.1.0",
+
+    "dependencies": {
+        "jade": "*",
+        "minify": "*",
+        "riot": "*",
+        "scss-cli": "*",
+        "typescript": "*",
+        "typescript-simple": "*"
+    }
+}

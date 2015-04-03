@@ -1,0 +1,10 @@
+{
+    "name": "loose",
+    "version": "0.1.0",
+
+    "dependencies": {
+        "riot": "*",
+        "primer-css": "*",
+        "random": "*"
+    }
+}
